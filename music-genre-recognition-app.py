@@ -9,7 +9,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from keras.initializers import glorot_uniform
 from keras.preprocessing.image import ImageDataGenerator
 from keras.preprocessing.image import load_img,img_to_array
-from bing_image_downloader import downloader
+#from bing_image_downloader import downloader
 from streamlit import caching
 st.write(""" # Music Genre Recognition App """)
 import time 
