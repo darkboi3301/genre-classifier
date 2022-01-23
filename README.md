@@ -3,9 +3,12 @@
 Music Genre Classification using GTZAN Dataset.Here is the Link to Dataset [GTZAN Dataset](https://www.kaggle.com/andradaolteanu/gtzan-dataset-music-genre-classification)
 
 ## installation
-download the the zip file or clone the repo
+download the the zip file or clone the repo.
+
 install module specified in requirements.txt
+
 run music-genre-recognition-app.py
+
 
 ## ERRORS ca be raised in issues section
 
