@@ -9,26 +9,19 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from keras.initializers import glorot_uniform
 from keras.preprocessing.image import ImageDataGenerator
 from keras.preprocessing.image import load_img,img_to_array
-#from bing_image_downloader import downloader
+from bing_image_downloader import downloader
 from streamlit import caching
-
-#from unsplash_search import UnsplashSearch
-#unsplash = UnsplashSearch("C5OCp7HRCjNi9nr72kUXBpsY46mAPJizBcOrBEpA9EI")
-
-
 st.write(""" # Music Genre Recognition App """)
 import time 
-time.sleep(1)
+#time.sleep(1)
 st.write("""## This is a Web App to predict Genre of Music.""")
-time.sleep(1)
+#time.sleep(1)
 st.write("On the backend of this Web App a Convolutional Neural Network Model is used.The Model was trained on Mel Spectrogram of Music Files in the GTZAN Dataset.Note that this model does not cosider the emotion or the lyrics of the song,or music given therefore solely guesses the genre with the song's mel spectogram (i.e frequency visualization image) therefore there is a high chance of false poitives or negatives.Works best with the songs used in the GTZAN dataset.")
-time.sleep(1)
+#time.sleep(1)
 st.write("""## Made By:-""") 
-time.sleep(1)
-st.write("""**Harshita,Idhaya Ancy,Radhika,Monesha,Sahana,Arunasri**""")  
-time.sleep(1)
-
-
+#time.sleep(1)
+st.write("""**Harshita,Janani,Idhaya Ancy,Radhika,Monesha,Sahana,Arunasri**""")  
+#time.sleep(1)
 st.markdown(
     f'''
         <style>
@@ -39,65 +32,7 @@ st.markdown(
     ''',
     unsafe_allow_html=True
 )
-
 col1,col2 = st.sidebar.columns(2)
-
-#@st.cache
-#def get_url(query):
-  # img = unsplash.search_photo(query)
-  #img_url = img['img']
-  #return img_url,img
-
-# def default_background():
-  # page_bg_img = '''
-  # <style>
-  # body {
-  # background-image: url("https://img.freepik.com/free-vector/musical-notes-frame-with-text-space_1017-32857.jpg");
-  # background-size: cover;
-  # }  
-  # </style>
-  # '''
-  # st.markdown(page_bg_img, unsafe_allow_html=True)
-
-#img_url,img = get_url("best landscape photos")
-
-#st.sidebar.write("Check out Github Repo for this App and my LinkedIn Profile")
-
-#background = st.sidebar.radio("Do You Want Use Default Background or Change?",("Default Background","Change Background"))
-
-# def change_background():
-
-  # change = st.sidebar.button("Change Background of App")
-  
-  # if(change):
-    # caching.clear_cache()
-    # img_url,img = get_url("best landscape photos")
-    
-    # st.write("Photo By " + img['credits'] + " on Unsplash")
-    # page_bg_img = '''
-    # <style>
-    # body {
-    # background-image: url(''' +img_url+''');
-    # background-size: cover;
-    # }
-    # </style>
-    # '''
-    # st.markdown(page_bg_img, unsafe_allow_html=True)
-
-# if(background=="Default Background"): 
-  # default_background()
-# if(background=="Change Background"):
-#  default_background()
-
-
-
-#linked_in = '''[![LinkedIn](https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/120px-LinkedIn_Logo.svg.png)](https://www.linkedin.com/in/kunal-vaidya-0bab51198/)'''
-#col1.markdown(linked_in, unsafe_allow_html=True)
-
-#github = '''[![LinkedIn](https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/GitHub_logo_2013.svg/120px-GitHub_logo_2013.svg.png)](https://github.com/KunalVaidya99/Music-Genre-Classification)'''
-#col2.markdown(github, unsafe_allow_html=True)
-
-
 file = st.sidebar.file_uploader("Please Upload Mp3 Audio File Here or Use Demo Of App Below using Preloaded Music",
 type=["mp3"])
 
@@ -191,16 +126,6 @@ def create_melspectrogram(wav_file):
   p = plt.imshow(librosa.power_to_db(mels,ref=np.max))
   plt.savefig('melspectrogram.png')
 
-
-#def download_image():
-#  filename = str.split(filename,"(")[0]
-#  downloader.download(filename + "Spotify", limit=1,  output_dir='/', adult_filter_off=True, force_replace=False, timeout=60)
-#  return filename
-
-#def download_image_demo(filename):
- # downloader.download(filename + "Spotify", limit=1,  output_dir='/', adult_filter_off=True, force_replace=False, timeout=60)
-  
-
 def predict(image_data,model):
 
   #image = image_data.resize((288,432))
@@ -224,9 +149,7 @@ def show_output(songname):
   create_melspectrogram("extracted.wav") 
   image_data = load_img('melspectrogram.png',color_mode='rgba',target_size=(288,432))
   
-#  download_image_demo(songname)
   st.sidebar.write("The Song You have Choosen Is " +songname )
-#  st.sidebar.image(songname +"Spotify" + "/Image_1.jpg",use_column_width=True)
   st.sidebar.write("**Play the Song Below if you want!**")
   st.sidebar.audio(songname + ".mp3" ,"audio/mp3")  
 
@@ -279,9 +202,6 @@ else:
   create_melspectrogram("extracted.wav") 
   image_data = load_img('melspectrogram.png',color_mode='rgba',target_size=(288,432))
   
-  #filename = download_image()
-  #st.sidebar.write("The Song You have Choosen Is " +filename )
-  #st.sidebar.image(filename +"Spotify" + "/Image_1.jpg",use_column_width=True)
   st.sidebar.write("**Play the Song Below if you want!**")
   st.sidebar.audio(file,"audio/mp3")
   
@@ -310,6 +230,8 @@ else:
 
   if(spec_or_prob=="Mel Spectrogram"):
     st.image("melspectrogram.png",use_column_width=True)
-
-  #st.text("Probability (0: Blues, 1: Classical, 2: Country,3: Disco,4: Hiphop,5: Metal,6: Pop,7: Reggae,8: Rock")
-  #st.write(prediction)
+    
+    
+    
+    
+    
